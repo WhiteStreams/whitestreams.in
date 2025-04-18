@@ -104,7 +104,7 @@ function Home() {
   const heroSlides = [
     {
       image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=2000',
-      title: 'Luxury Villa in you',
+      title: 'Luxury Villa in Bali',
       location: 'Bali, Indonesia',
       path: '/real-estate/luxury-villa-bali'
     },
@@ -336,37 +336,41 @@ function Home() {
         <div className="max-w-7xl mx-auto px-4 py-16">
           <h2 className="text-4xl font-serif mb-12 text-center text-emerald-900">Our Leadership</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* CEO */}
+            {/* Founder */}
             <div className="bg-white rounded-xl p-8 shadow-sm">
-              <div className="flex items-start space-x-6">
-                <img
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400"
-                  alt="CEO"
-                  className="w-24 h-24 rounded-lg object-cover"
-                />
-                <div>
-                  <h3 className="text-2xl font-serif text-emerald-900">Rahul Sharma</h3>
-                  <p className="text-gray-600 mb-4">Founder & CEO</p>
-                  <p className="text-gray-600 text-sm">
-                    "Our mission is to redefine luxury by creating a marketplace that combines exceptional quality, authenticity, and personalized service."
+              <div className="flex flex-col items-center">
+                <div className="w-full max-w-[280px] aspect-[3/4] mb-6 overflow-hidden rounded-2xl">
+                  <img
+                    src="https://image931.wordpress.com/wp-content/uploads/2025/04/ae0c4b7f-cc4a-4ddb-9186-29a09a80ae1d-1.jpg"
+                    alt="Founder"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="text-center">
+                  <h3 className="text-2xl font-serif text-emerald-900">Pranes Suriya Kumar</h3>
+                  <p className="text-gray-600 mb-4">Founder</p>
+                  <p className="text-gray-600 text-sm max-w-xl">
+                    An Enterprise Cybersecurity Architect. He specialized in enterprise systems, cryptocurrency, decentalized finance (DeFi) and founder of WHITE STREAMS. With a background from PSG College of Technology, he brings a strong blend of technical expertise and innovation in cybersecurity and blockchain technology.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* COO */}
+            {/* CEO */}
             <div className="bg-white rounded-xl p-8 shadow-sm">
-              <div className="flex items-start space-x-6">
-                <img
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400"
-                  alt="COO"
-                  className="w-24 h-24 rounded-lg object-cover"
-                />
-                <div>
-                  <h3 className="text-2xl font-serif text-emerald-900">Priya Patel</h3>
-                  <p className="text-gray-600 mb-4">Chief Operating Officer</p>
-                  <p className="text-gray-600 text-sm">
-                    "We're committed to delivering unparalleled luxury experiences while maintaining the highest standards of service excellence."
+              <div className="flex flex-col items-center">
+                <div className="w-full max-w-[280px] aspect-[3/4] mb-6 overflow-hidden rounded-2xl">
+                  <img
+                    src="https://image931.wordpress.com/wp-content/uploads/2025/04/dsc07153_original.jpg?w=1024"
+                    alt="CEO"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="text-center">
+                  <h3 className="text-2xl font-serif text-emerald-900">Moeri Iwata</h3>
+                  <p className="text-gray-600 mb-4">CEO</p>
+                  <p className="text-gray-600 text-sm max-w-xl">
+                    A Japanese marketing professional educated at the University of Shizuoka, with a global perspective shaped by extensive international experience. Through exploring diverse cultures and markets, She've developed a keen ability to make insightful, principle-driven decisions. Her vision is providing seamless digital currency service and make opportunity that anyone can be anything.
                   </p>
                 </div>
               </div>
