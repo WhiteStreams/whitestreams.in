@@ -50,8 +50,25 @@ export const realEstateListings: RealEstateListing[] = [
     location: "Business Bay, Dubai, UAE",
     specs: ["1 Bedroom", "1,061 sqft", "Canal View"],
     images: [
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=2000",
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=2000"
+      "https://img.jamesedition.com/listing_images/2025/02/19/13/50/52/2087e62a-cffb-46c2-8557-2e4f87430a54/je/1100xxs.jpg",
+      "https://img.jamesedition.com/listing_images/2025/02/19/13/42/58/54b661f0-d18d-4f84-af2d-e43cf1a7d51b/je/1100xxs.jpg",
+      "https://img.jamesedition.com/listing_images/2025/02/19/13/50/52/7e616052-a4d0-4c7b-838a-d9fafaaebd4f/je/1100xxs.jpg",
+      "https://img.jamesedition.com/listing_images/2025/02/19/13/42/59/fceae24a-26bf-4ab1-9f2c-36f02f06469f/je/1100xxs.jpg",
+      "https://img.jamesedition.com/listing_images/2025/02/19/13/50/52/ea6a2aeb-f056-4288-8f1e-45ce857eb226/je/1100xxs.jpg",
+      "https://img.jamesedition.com/listing_images/2025/02/19/13/42/59/e444fcce-caac-46ae-ae48-1f8473f3c31a/je/1100xxs.jpg",
+      "https://img.jamesedition.com/listing_images/2025/02/19/13/50/52/0a5c1e71-741a-4b9f-8fd3-5f0578b9fc5d/je/1100xxs.jpg",
+      "https://img.jamesedition.com/listing_images/2025/02/19/13/42/59/48f454d6-bebc-4012-a36f-5739a3777731/je/1100xxs.jpg",
+      "https://img.jamesedition.com/listing_images/2025/02/19/13/50/52/eabae520-1db3-4963-be0a-dee3707bc4d3/je/1100xxs.jpg",
+      "https://img.jamesedition.com/listing_images/2025/02/19/13/42/58/4d54f9fc-92ae-47a0-b60d-0b2fad00794e/je/1100xxs.jpg",
+      "https://img.jamesedition.com/listing_images/2025/02/19/13/50/52/8985a736-da4e-4e17-8f02-53fc677ee75b/je/1100xxs.jpg",
+      "https://img.jamesedition.com/listing_images/2025/02/19/13/42/59/3b5cadc7-f0a2-4dbe-b419-67df01477841/je/1100xxs.jpg",
+      "https://img.jamesedition.com/listing_images/2025/02/19/13/50/52/25cc52cc-77a7-4d31-9f98-14e2f03d03a9/je/1100xxs.jpg",
+      "https://img.jamesedition.com/listing_images/2025/02/19/13/50/52/7df3b2dc-0073-4a57-90f9-08eccbb6f4b7/je/1100xxs.jpg",
+      "https://img.jamesedition.com/listing_images/2025/02/19/13/42/58/1dec8c80-9118-448e-8fef-7a9762597e5a/je/1100xxs.jpg",
+      "https://img.jamesedition.com/listing_images/2025/02/19/13/42/59/e093c421-e107-472e-b663-9f49cc1b7dd6/je/1100xxs.jpg",
+      "https://img.jamesedition.com/listing_images/2025/02/19/13/50/52/bd5f45d1-28f2-4214-8cbd-1e74540011d0/je/1100xxs.jpg",
+      "https://img.jamesedition.com/listing_images/2025/02/19/13/42/58/0b1db5e4-474e-46b3-abdb-df2791fce1d2/je/1100xxs.jpg",
+      "https://img.jamesedition.com/listing_images/2025/02/19/13/50/52/6214852f-ebc0-434c-926f-281f097d731f/je/1100xxs.jpg"
     ],
     description: "One River Point by Ellington Properties is a vision of contemporary elegance, standing proudly on its own private, isolated plot along the Dubai Canal, offering unobstructed views of the Burj Khalifa and the shimmering waterfront. This architectural masterpiece is designed for those who seek an exclusive, serene sanctuary while staying seamlessly connected to the energy of Business Bay.",
     specifications: [
