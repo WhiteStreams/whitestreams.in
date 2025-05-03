@@ -25,7 +25,7 @@ export interface Seller {
 
 export const defaultSeller: Seller = {
   name: "White Streams",
-  experience: "14 years with JamesEdition",
-  description: "White Streams has long been a leader in the yachting industry with a rich family history dating back to 1948. Today, the company provides complete yachting services worldwide, including superyacht sales, yacht charter, crew placement, and new construction.",
+  experience: "Premier Luxury Marketplace",
+  description: "White Streams is the world's leading luxury marketplace, connecting sophisticated buyers with extraordinary luxury across real estate, super cars, precious metals, yachts, and private jets.",
   address: "India"
 };

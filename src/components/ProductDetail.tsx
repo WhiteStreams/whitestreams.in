@@ -1,12 +1,7 @@
-import React from 'react';
-import { Heart, Share, ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { ChevronLeft, ChevronRight, ArrowLeft, Image, ChevronDown } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { sendEmail } from '../config/emailConfig';
-
-interface Specification {
-  label: string;
-  value: string;
-}
 
 interface ProductDetailProps {
   title: string;
@@ -14,7 +9,7 @@ interface ProductDetailProps {
   year?: string;
   mainImage: string;
   galleryImages: string[];
-  specifications: Specification[];
+  specifications: { label: string; value: string; }[];
   description: string;
   features?: string[];
   sellerName: string;
@@ -37,18 +32,43 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
   sellerDescription,
   sellerAddress,
 }) => {
-  const [currentImage, setCurrentImage] = React.useState(0);
-  const [formData, setFormData] = React.useState({
+  const [currentImage, setCurrentImage] = useState(0);
+  const [showAllImages, setShowAllImages] = useState(false);
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     message: `I would like more information about ${title}`
   });
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [submitStatus, setSubmitStatus] = React.useState<'idle' | 'success' | 'error'>('idle');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [imageLoaded, setImageLoaded] = useState<boolean[]>([]);
   
   const allImages = [mainImage, ...galleryImages];
+  const visibleImages = showAllImages ? allImages : allImages.slice(0, 4);
   const location_path = useLocation();
+  const contactFormRef = useRef<HTMLDivElement>(null);
+
+  const handleImageLoad = (index: number) => {
+    setImageLoaded(prev => {
+      const newState = [...prev];
+      newState[index] = true;
+      return newState;
+    });
+  };
+
+  const scrollToContact = () => {
+    contactFormRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const getInterestFromPath = (path: string): string => {
+    if (path.includes('/real-estate')) return 'Real Estate';
+    if (path.includes('/cars')) return 'Cars';
+    if (path.includes('/metals')) return 'Metals';
+    if (path.includes('/yachts')) return 'Yachts';
+    if (path.includes('/jets')) return 'Jets';
+    return 'General';
+  };
 
   const getDetailsTitle = () => {
     if (location_path.pathname.includes('/real-estate')) return 'Property Details';
@@ -81,9 +101,9 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
       await sendEmail({
         from_name: formData.name,
         from_email: formData.email,
-        phone: formData.phone,
+        phone: formData.phone || 'Not provided',
+        interest: getInterestFromPath(location_path.pathname),
         message: formData.message,
-        listing_title: title
       });
 
       setSubmitStatus('success');
@@ -103,11 +123,11 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
   };
 
   const nextImage = () => {
-    setCurrentImage((prev) => (prev + 1) % allImages.length);
+    setCurrentImage((prev) => (prev + 1) % visibleImages.length);
   };
 
   const prevImage = () => {
-    setCurrentImage((prev) => (prev - 1 + allImages.length) % allImages.length);
+    setCurrentImage((prev) => (prev - 1 + visibleImages.length) % visibleImages.length);
   };
 
   return (
@@ -125,60 +145,140 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column - Main Image and Gallery */}
           <div className="lg:col-span-2">
-            <div className="relative aspect-w-16 aspect-h-9 rounded-lg overflow-hidden mb-4">
-              <img
-                src={allImages[currentImage]}
-                alt={title}
-                className="w-full h-[500px] object-cover"
-              />
-              <div className="absolute inset-0 flex items-center justify-between px-4">
-                <button
-                  onClick={prevImage}
-                  className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
-                >
-                  <ChevronLeft className="h-6 w-6 text-white" />
-                </button>
-                <button
-                  onClick={nextImage}
-                  className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
-                >
-                  <ChevronRight className="h-6 w-6 text-white" />
-                </button>
-              </div>
-              <div className="absolute top-4 right-4 flex space-x-2">
-                <button className="p-2 rounded-full bg-white/80 hover:bg-white transition-colors">
-                  <Heart className="h-5 w-5 text-gray-700" />
-                </button>
-                <button className="p-2 rounded-full bg-white/80 hover:bg-white transition-colors">
-                  <Share className="h-5 w-5 text-gray-700" />
-                </button>
-              </div>
-            </div>
-            <div className="grid grid-cols-4 gap-4">
-              {allImages.map((img, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentImage(idx)}
-                  className={`relative aspect-w-16 aspect-h-9 rounded-lg overflow-hidden ${
-                    currentImage === idx ? 'ring-2 ring-emerald-500' : ''
+            {/* Mobile Image Gallery */}
+            <div className="block lg:hidden">
+              {/* Show first image */}
+              <div className="relative w-full aspect-[16/9] bg-gray-100 mb-4">
+                {!imageLoaded[0] && (
+                  <div className="absolute inset-0 bg-gray-100 animate-pulse" />
+                )}
+                <img
+                  src={allImages[0]}
+                  alt={`${title} - Main View`}
+                  className={`w-full h-full object-cover transition-opacity duration-300 ${
+                    imageLoaded[0] ? 'opacity-100' : 'opacity-0'
                   }`}
+                  onLoad={() => handleImageLoad(0)}
+                  loading="eager"
+                  decoding="async"
+                  sizes="100vw"
+                />
+              </div>
+
+              {/* View All Images Button */}
+              {allImages.length > 1 && (
+                <button
+                  onClick={() => setShowAllImages(!showAllImages)}
+                  className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-white border border-gray-200 rounded-lg text-gray-700 mb-6"
                 >
-                  <img src={img} alt="" className="w-full h-24 object-cover" />
+                  <Image className="w-5 h-5" />
+                  <span>View All {allImages.length} Photos</span>
+                  <ChevronDown className={`w-5 h-5 transition-transform ${showAllImages ? 'rotate-180' : ''}`} />
                 </button>
-              ))}
+              )}
+
+              {/* Additional Images */}
+              {showAllImages && (
+                <div className="space-y-3">
+                  {allImages.slice(1).map((img, idx) => (
+                    <div key={idx + 1} className="relative w-full aspect-[16/9] bg-gray-100">
+                      {!imageLoaded[idx + 1] && (
+                        <div className="absolute inset-0 bg-gray-100 animate-pulse" />
+                      )}
+                      <img
+                        src={img}
+                        alt={`${title} - View ${idx + 2}`}
+                        className={`w-full h-full object-cover transition-opacity duration-300 ${
+                          imageLoaded[idx + 1] ? 'opacity-100' : 'opacity-0'
+                        }`}
+                        onLoad={() => handleImageLoad(idx + 1)}
+                        loading="lazy"
+                        decoding="async"
+                        sizes="100vw"
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Desktop Image Gallery */}
+            <div className="hidden lg:block">
+              <div className="relative aspect-[16/9] mb-4">
+                <img
+                  src={visibleImages[currentImage]}
+                  alt={title}
+                  className="w-full h-full object-cover rounded-lg"
+                />
+                <div className="absolute inset-0 flex items-center justify-between px-4">
+                  <button
+                    onClick={prevImage}
+                    className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
+                    aria-label="Previous image"
+                  >
+                    <ChevronLeft className="h-6 w-6 text-white" />
+                  </button>
+                  <button
+                    onClick={nextImage}
+                    className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
+                    aria-label="Next image"
+                  >
+                    <ChevronRight className="h-6 w-6 text-white" />
+                  </button>
+                </div>
+              </div>
+              <div className="grid grid-cols-4 gap-4">
+                {visibleImages.map((img, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentImage(idx)}
+                    className={`relative aspect-[16/9] rounded-lg overflow-hidden ${
+                      currentImage === idx ? 'ring-2 ring-emerald-500' : ''
+                    }`}
+                    aria-label={`View image ${idx + 1}`}
+                  >
+                    <img 
+                      src={img} 
+                      alt="" 
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </button>
+                ))}
+                {!showAllImages && allImages.length > 4 && (
+                  <button
+                    onClick={() => setShowAllImages(true)}
+                    className="relative aspect-[16/9] rounded-lg overflow-hidden bg-gray-100 hover:bg-gray-200 transition-colors flex items-center justify-center"
+                    aria-label={`Show ${allImages.length - 4} more images`}
+                  >
+                    <div className="text-center">
+                      <Image className="w-6 h-6 mx-auto mb-1 text-gray-600" />
+                      <span className="text-sm text-gray-600">+{allImages.length - 4} more</span>
+                    </div>
+                  </button>
+                )}
+              </div>
             </div>
 
             {/* Details */}
             <div className="mt-8">
               <h1 className="text-3xl font-serif mb-4">{title}</h1>
-              <div className="flex items-center text-gray-600 mb-6">
-                <span>{location}</span>
-                {year && (
-                  <>
-                    <span className="mx-2">•</span>
-                    <span>{year}</span>
-                  </>
-                )}
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center text-gray-600">
+                  <span>{location}</span>
+                  {year && (
+                    <>
+                      <span className="mx-2">•</span>
+                      <span>{year}</span>
+                    </>
+                  )}
+                </div>
+                <button 
+                  onClick={scrollToContact}
+                  className="text-2xl font-semibold text-emerald-800 hover:text-emerald-700 transition-colors cursor-pointer"
+                >
+                  Price On Request
+                </button>
               </div>
 
               {/* About Section */}
@@ -190,7 +290,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
               {/* Specifications */}
               <div className="mb-8">
                 <h2 className="text-xl font-serif mb-4">{getDetailsTitle()}</h2>
-                <div className="grid grid-cols-2 gap-x-8 gap-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
                   {specifications.map((spec) => (
                     <div key={spec.label} className="border-b border-gray-200 pb-2">
                       <dt className="text-gray-600 text-sm">{spec.label}</dt>
@@ -216,7 +316,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
 
           {/* Right Column - Contact Form */}
           <div className="lg:col-span-1">
-            <div className="bg-white p-6 rounded-xl shadow-sm sticky top-24">
+            <div ref={contactFormRef} className="bg-white p-6 rounded-xl shadow-sm sticky top-24">
               <div className="mb-6">
                 <h3 className="font-medium text-gray-900 mb-1">{sellerName}</h3>
                 <p className="text-sm text-gray-600">{sellerExperience}</p>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { Menu, Search, User } from 'lucide-react';
+import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
+import { Menu } from 'lucide-react';
 import RealEstate from './pages/RealEstate';
 import Cars from './pages/Cars';
 import Metals from './pages/Metals';
@@ -9,8 +9,24 @@ import Jets from './pages/Jets';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import MediaManager from './pages/MediaManager';
+import ContentManager from './pages/ContentManager';
+import AdminDashboard from './pages/AdminDashboard';
 import ScrollToTop from './components/ScrollToTop';
 import MenuDrawer from './components/MenuDrawer';
+
+// Simple admin check - in production, use proper authentication
+const isAdmin = () => {
+  return localStorage.getItem('isAdmin') === 'true';
+};
+
+// Protected Route component
+const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+  if (!isAdmin()) {
+    return <Navigate to="/" replace />;
+  }
+  return <>{children}</>;
+};
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -40,11 +56,6 @@ function App() {
                 <Link to="/yachts" className="text-gray-600 hover:text-emerald-800">Yachts</Link>
                 <Link to="/jets" className="text-gray-600 hover:text-emerald-800">Jets</Link>
               </div>
-
-              <div className="flex items-center space-x-6">
-                <Search className="h-5 w-5 text-emerald-900" />
-                <User className="h-5 w-5 text-emerald-900" />
-              </div>
             </div>
           </div>
         </nav>
@@ -62,6 +73,14 @@ function App() {
           <Route path="/jets/*" element={<Jets />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route 
+            path="/edit/*" 
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            } 
+          />
         </Routes>
       </div>
     </Router>

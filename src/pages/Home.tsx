@@ -5,27 +5,27 @@ import { Link, useNavigate } from 'react-router-dom';
 const categories = [
   { 
     name: 'Real Estate',
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=2000',
+    image: 'https://image931.wordpress.com/wp-content/uploads/2025/04/img_2078.jpg',
     path: '/real-estate'
   },
   { 
     name: 'Cars',
-    image: 'https://images.unsplash.com/photo-1614200187524-dc4b892acf16?auto=format&fit=crop&q=80&w=2000',
+    image: 'https://image931.wordpress.com/wp-content/uploads/2025/04/img_2505.jpg',
     path: '/cars'
   },
   { 
-    name: 'Metals & Precious Metals',
-    image: 'https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&q=80&w=2000',
+    name: 'Metals',
+    image: 'https://image931.wordpress.com/wp-content/uploads/2025/04/img_2230-1.jpg',
     path: '/metals'
   },
   { 
     name: 'Yachts',
-    image: 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&q=80&w=2000',
+    image: 'https://image931.wordpress.com/wp-content/uploads/2025/04/img25-1.jpg?w=1024',
     path: '/yachts'
   },
   { 
     name: 'Jets',
-    image: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&q=80&w=2000',
+    image: 'https://image931.wordpress.com/wp-content/uploads/2025/04/img_1213.jpg',
     path: '/jets'
   },
 ];
@@ -50,48 +50,40 @@ const features = [
 
 const trendingListings = [
   {
-    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=2000",
-    title: "Luxury Villa with Private Beach",
+    image: "https://image931.wordpress.com/wp-content/uploads/2025/04/img_2078.jpg",
+    title: "Luxury 5 Bedroom Villa in Nad Al Sheba",
     location: "Dubai, UAE",
     category: "Real Estate",
-    path: "/real-estate/luxury-villa"
+    path: "/real-estate/nad-al-sheba-villa"
   },
   {
-    image: "https://images.unsplash.com/photo-1614200187524-dc4b892acf16?auto=format&fit=crop&q=80&w=2000",
-    title: "Bugatti Mistral",
-    location: "Monaco",
+    image: "https://image931.wordpress.com/wp-content/uploads/2025/04/img_2514.jpg",
+    title: "2019 Bugatti Chiron",
+    location: "Beverly Hills, CA",
     category: "Cars",
-    path: "/cars/bugatti-mistral"
+    path: "/cars/bugatti-chiron-2019"
   },
   {
-    image: "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&q=80&w=2000",
-    title: "Benetti Oasis 40M",
-    location: "Miami, USA",
+    image: "https://image931.wordpress.com/wp-content/uploads/2025/04/img25-1.jpg?w=1024",
+    title: "SPITFIRE",
+    location: "Antalya, Turkey",
     category: "Yachts",
-    path: "/yachts/benetti-oasis"
+    path: "/yachts/spitfire"
   }
 ];
 
 const partners = [
   {
     name: "Bentley Motors",
-    logo: "https://images.unsplash.com/photo-1674507825416-56a96d450ad3?auto=format&fit=crop&q=80&w=200",
-    description: "Luxury automotive partner"
+    logo: "https://image931.wordpress.com/wp-content/uploads/2025/04/img_2564-1.png"
   },
   {
     name: "Rolls-Royce",
-    logo: "https://images.unsplash.com/photo-1674507825416-56a96d450ad3?auto=format&fit=crop&q=80&w=200",
-    description: "Premium automotive collaborator"
+    logo: "https://image931.wordpress.com/wp-content/uploads/2025/04/img_2565-1.png"
   },
   {
-    name: "Emirates Palace",
-    logo: "https://images.unsplash.com/photo-1674507825416-56a96d450ad3?auto=format&fit=crop&q=80&w=200",
-    description: "Luxury real estate partner"
-  },
-  {
-    name: "Benetti Yachts",
-    logo: "https://images.unsplash.com/photo-1674507825416-56a96d450ad3?auto=format&fit=crop&q=80&w=200",
-    description: "Exclusive yacht manufacturer"
+    name: "Magnolia Yachts",
+    logo: "https://image931.wordpress.com/wp-content/uploads/2025/04/img_2566-1.jpg"
   }
 ];
 
@@ -103,22 +95,29 @@ function Home() {
 
   const heroSlides = [
     {
-      image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=2000',
-      title: 'Luxury Villa in Bali',
-      location: 'Bali, Indonesia',
-      path: '/real-estate/luxury-villa-bali'
+      image: 'https://image931.wordpress.com/wp-content/uploads/2025/04/copy-of-copy-of-e382b3e38394e383bc-1.png',
+      title: "World's Luxury for Digital Currency",
+      subtitle: "Experience seamless transactions with cryptocurrency",
+      location: "Global",
+      path: '/about'
     },
     {
-      image: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&q=80&w=2000',
-      title: 'Ferrari F8 Tributo',
+      image: 'https://image931.wordpress.com/wp-content/uploads/2025/04/img_2078.jpg',
+      title: 'Luxury Villa in Nad Al Sheba',
       location: 'Dubai, UAE',
-      path: '/cars/ferrari-f8'
+      path: '/real-estate/nad-al-sheba-villa'
     },
     {
-      image: 'https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&q=80&w=2000',
-      title: 'Precious Metals Investment',
-      location: 'Dubai, UAE',
-      path: '/metals/precious-metals-investment'
+      image: 'https://image931.wordpress.com/wp-content/uploads/2025/04/img_2514.jpg',
+      title: '2019 Bugatti Chiron',
+      location: 'Beverly Hills, CA',
+      path: '/cars/bugatti-chiron-2019'
+    },
+    {
+      image: 'https://image931.wordpress.com/wp-content/uploads/2025/04/img25-1.jpg?w=1024',
+      title: 'SPITFIRE Luxury Yacht',
+      location: 'Antalya, Turkey',
+      path: '/yachts/spitfire'
     }
   ];
 
@@ -194,7 +193,11 @@ function Home() {
               {heroSlides[currentSlide].title}
             </h1>
             <div className="flex items-center text-white">
-              <span className="text-xl opacity-75">{heroSlides[currentSlide].location}</span>
+              {heroSlides[currentSlide].subtitle ? (
+                <span className="text-xl opacity-75">{heroSlides[currentSlide].subtitle}</span>
+              ) : (
+                <span className="text-xl opacity-75">{heroSlides[currentSlide].location}</span>
+              )}
             </div>
           </div>
         </div>
@@ -286,7 +289,7 @@ function Home() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-serif mb-6 text-emerald-900">About White Streams</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              White Streams is the premier destination for exceptional luxury, connecting sophisticated buyers with the world's most prestigious sellers. Our curated marketplace showcases extraordinary real estate, automobiles, precious metals, yachts, and private jets.
+              White Streams is the premier destination for exceptional luxury, connecting sophisticated buyers with the world's most prestigious sellers. Our curated marketplace showcases extraordinary real estate, super cars, precious metals, yachts, and private jets.
             </p>
           </div>
           
@@ -309,22 +312,15 @@ function Home() {
         <div className="max-w-7xl mx-auto px-4 py-24">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-serif mb-6 text-emerald-900">Our Partners</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Collaborating with the world's most prestigious brands to deliver unparalleled luxury experiences.
-            </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-3 gap-12">
             {partners.map((partner) => (
-              <div key={partner.name} className="text-center">
-                <div className="bg-gray-50 rounded-xl p-8 mb-4">
-                  <img
-                    src={partner.logo}
-                    alt={partner.name}
-                    className="w-24 h-24 mx-auto object-contain"
-                  />
-                </div>
-                <h3 className="text-lg font-medium text-gray-900 mb-1">{partner.name}</h3>
-                <p className="text-sm text-gray-600">{partner.description}</p>
+              <div key={partner.name} className="flex items-center justify-center">
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className={`object-contain ${partner.name === "Rolls-Royce" ? "h-32" : "h-24"}`}
+                />
               </div>
             ))}
           </div>
@@ -362,13 +358,13 @@ function Home() {
                 <div className="w-full max-w-[280px] aspect-[3/4] mb-6 overflow-hidden rounded-2xl">
                   <img
                     src="https://image931.wordpress.com/wp-content/uploads/2025/04/dsc07153_original.jpg?w=1024"
-                    alt="CEO"
+                    alt="Chief Executive Officer"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="text-center">
                   <h3 className="text-2xl font-serif text-emerald-900">Moeri Iwata</h3>
-                  <p className="text-gray-600 mb-4">CEO</p>
+                  <p className="text-gray-600 mb-4">Chief Executive Officer</p>
                   <p className="text-gray-600 text-sm max-w-xl">
                     A Japanese marketing professional educated at the University of Shizuoka, with a global perspective shaped by extensive international experience. Through exploring diverse cultures and markets, She've developed a keen ability to make insightful, principle-driven decisions. Her vision is providing seamless digital currency service and make opportunity that anyone can be anything.
                   </p>

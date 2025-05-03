@@ -56,6 +56,6 @@ export interface Specification {
 export const defaultSeller: Seller = {
   name: "White Streams",
   experience: "Premier Luxury Marketplace",
-  description: "White Streams is India's leading luxury marketplace, connecting sophisticated buyers with extraordinary luxury across real estate, automobiles, precious metals, yachts, and private jets.",
+  description: "White Streams is the world's leading luxury marketplace, connecting sophisticated buyers with extraordinary luxury across real estate, super cars, precious metals, yachts, and private jets.",
   address: "India"
 };
