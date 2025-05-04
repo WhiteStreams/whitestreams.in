@@ -46,7 +46,14 @@ function App() {
                 >
                   <Menu className="h-6 w-6 text-emerald-900" />
                 </button>
-                <Link to="/" className="text-2xl font-serif text-emerald-900 ml-2">White Streams</Link>
+                <Link to="/" className="flex items-center gap-2">
+                  <img 
+                    src="https://image931.wordpress.com/wp-content/uploads/2025/05/s-4-1.png" 
+                    alt="White Streams Logo" 
+                    className="h-8 w-auto"
+                  />
+                  <span className="text-2xl font-serif text-emerald-900">White Streams</span>
+                </Link>
               </div>
               
               <div className="hidden md:flex space-x-8">

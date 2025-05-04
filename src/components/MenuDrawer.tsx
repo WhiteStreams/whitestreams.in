@@ -38,7 +38,14 @@ const MenuDrawer: React.FC<MenuDrawerProps> = ({ isOpen, onClose }) => {
         {/* Fixed Header */}
         <div className="p-6 border-b border-gray-100">
           <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-serif text-emerald-900">Menu</h2>
+            <div className="flex items-center gap-2">
+              <img 
+                src="https://image931.wordpress.com/wp-content/uploads/2025/05/s-4-1.png" 
+                alt="White Streams Logo" 
+                className="h-8 w-auto"
+              />
+              <h2 className="text-2xl font-serif text-emerald-900">Menu</h2>
+            </div>
             <button
               onClick={onClose}
               className="p-2 hover:bg-gray-100 rounded-full transition-colors"

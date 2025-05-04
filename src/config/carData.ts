@@ -2,6 +2,50 @@ import { CarListing } from './types';
 
 export const carListings: CarListing[] = [
   {
+    id: 'pagani-utopia-2026',
+    title: "2026 Pagani Utopia RWD",
+    location: "Monaco, Monaco",
+    year: "2026",
+    specs: ["100 Km", "12 Cylinder", "864 HP"],
+    images: [
+      "https://image931.wordpress.com/wp-content/uploads/2025/05/img_2734-1.jpg",
+      "https://image931.wordpress.com/wp-content/uploads/2025/05/img_2974-1.jpg",
+      "https://image931.wordpress.com/wp-content/uploads/2025/05/img_2975-1.jpg"
+    ],
+    description: "The 2026 Pagani Utopia represents the pinnacle of automotive engineering and design, combining raw power with unparalleled luxury. This masterpiece features a potent 12-cylinder engine producing 864 horsepower, delivering an extraordinary driving experience.",
+    specifications: [
+      { label: "Year", value: "2026" },
+      { label: "Location", value: "Monaco, Monaco" },
+      { label: "Address", value: "17 Av. Albert II, 98000 Monaco" },
+      { label: "Mileage", value: "100 km (62 mi)" },
+      { label: "Engine", value: "12 Cylinder" },
+      { label: "Gearbox", value: "Automatic" },
+      { label: "Car type", value: "Roadster" },
+      { label: "Drive Train", value: "RWD" },
+      { label: "Fuel Type", value: "Other" },
+      { label: "Power", value: "864 hp (644 kw)" },
+      { label: "Condition", value: "New" },
+      { label: "VIN", value: "ZA94U11EC8XXXXXXXX" },
+      { label: "Exterior Color", value: "Custom" },
+      { label: "Interior Color", value: "Custom" }
+    ],
+    features: [
+      "12 Cylinder Engine",
+      "Automatic Transmission",
+      "Rear Wheel Drive",
+      "Custom Exterior",
+      "Custom Interior",
+      "Limited Production",
+      "Hypercar Performance",
+      "Advanced Aerodynamics",
+      "Carbon Fiber Construction",
+      "Premium Sound System",
+      "Navigation System",
+      "Climate Control"
+    ],
+    visible: true
+  },
+  {
     id: 'mclaren-artura-2025',
     title: "2025 McLaren Artura TechLux",
     location: "Las Vegas, NV, United States",
